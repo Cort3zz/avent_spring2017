@@ -33,9 +33,9 @@ public class DatabaseConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/adventfortest");
-        dataSource.setUsername("root");
-        dataSource.setPassword("test1234");
+        dataSource.setUrl("jdbc:mysql://den1.mysql2.gear.host:3306/adventlog");
+        dataSource.setUsername("adventlog");
+        dataSource.setPassword("Pe180g_lc5-3");
 
         return dataSource;
     }
