@@ -7,4 +7,6 @@ public interface DailyMessageDAO {
     void save(DailyMessage dailyMessage);
 
     String findMessageByDay(int day);
+
+    void modify(DailyMessage dailyMessage);
 }

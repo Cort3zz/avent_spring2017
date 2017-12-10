@@ -28,4 +28,13 @@ public class JPADailyMessageDAO implements DailyMessageDAO {
         }
         return actualDailyMessage.getMessage();
     }
+
+    @Override
+    public void modify(DailyMessage dailyMessage) {
+        DailyMessage modifiedMessage = entityManager.find(DailyMessage.class, dailyMessage.getDay());
+        entityManager.getTransaction().begin();
+        modifiedMessage.setMessage(dailyMessage.getMessage());
+        entityManager.getTransaction().commit();
+
+    }
 }

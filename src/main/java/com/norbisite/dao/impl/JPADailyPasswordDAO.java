@@ -25,4 +25,14 @@ public class JPADailyPasswordDAO implements DailyPasswordDAO {
         DailyPassword actualDailyPassword = entityManager.find(DailyPassword.class, day);
         return actualDailyPassword.getPassword();
     }
+
+    @Override
+    @Transactional
+    public void modify(DailyPassword dailyPassword) {
+        DailyPassword modifiedPassword = entityManager.find(DailyPassword.class, dailyPassword.getDay());
+        entityManager.getTransaction().begin();
+        modifiedPassword.setPassword(dailyPassword.getPassword());
+        entityManager.getTransaction().commit();
+
+    }
 }
