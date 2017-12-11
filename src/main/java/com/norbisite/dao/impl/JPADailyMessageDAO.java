@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Component
 @Transactional
@@ -32,9 +33,12 @@ public class JPADailyMessageDAO implements DailyMessageDAO {
     @Override
     public void modify(DailyMessage dailyMessage) {
         DailyMessage modifiedMessage = entityManager.find(DailyMessage.class, dailyMessage.getDay());
-        entityManager.getTransaction().begin();
-        modifiedMessage.setMessage(dailyMessage.getMessage());
-        entityManager.getTransaction().commit();
+        modifiedMessage.setMessage(modifiedMessage.getMessage().substring(0,modifiedMessage.getMessage().indexOf("<p>")+3) + dailyMessage.getMessage() + "</p>  ");
+    }
 
+    @Override
+    public List<DailyMessage> allMessage() {
+        return entityManager.createQuery("SELECT d FROM DailyMessage d", DailyMessage.class)
+                .getResultList();
     }
 }

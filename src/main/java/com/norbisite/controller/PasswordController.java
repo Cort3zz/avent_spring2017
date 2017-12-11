@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class PasswordController {
 
@@ -25,6 +28,12 @@ public class PasswordController {
         this.dailyMessageDAO = dailyMessageDAO;
     }
 
+    @ModelAttribute("messages")
+    public List<DailyMessage> getMessages() {
+        List<DailyMessage> dailyMessages = new ArrayList<>();
+        dailyMessages.addAll(dailyMessageDAO.allMessage());
+        return dailyMessages;
+    }
 
     @GetMapping(value = "/admin")
     public String admin(Model model) {

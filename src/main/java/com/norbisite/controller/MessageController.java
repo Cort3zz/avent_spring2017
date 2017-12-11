@@ -5,7 +5,6 @@ import com.norbisite.dao.DailyPasswordDAO;
 import com.norbisite.domain.DailyMessage;
 import com.norbisite.domain.MessagePassword;
 import com.norbisite.validation.MessagePasswordValidator;
-import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +35,8 @@ public class MessageController {
         binder.addValidators(new MessagePasswordValidator());
     }
 
+
+
     @PostMapping(value = "/message")
     public String performMessagePassword(@Valid @ModelAttribute("messagePassword") MessagePassword messagePassword, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
@@ -63,6 +64,8 @@ public class MessageController {
                 return "gifts/giftWithPictureDay2";
             case 5:
                 return "gifts/giftWithPictureDay5";
+            case 11:
+                return "gifts/giftWithPictureDay11";
             default:
                 return "gifts/gift";
         }

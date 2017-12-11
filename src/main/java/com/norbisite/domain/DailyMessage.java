@@ -1,4 +1,5 @@
 package com.norbisite.domain;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,7 +11,7 @@ public class DailyMessage {
     @Column(name = "day")
     private int day;
 
-    @Column(name = "message",columnDefinition = "LONGTEXT")
+    @Column(name = "message", columnDefinition = "LONGTEXT")
     private String message;
 
 
@@ -36,5 +37,11 @@ public class DailyMessage {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return ("" + day +
+                ": " + message);
     }
 }

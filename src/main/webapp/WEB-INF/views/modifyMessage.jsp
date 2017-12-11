@@ -15,7 +15,7 @@
     <form:form action="/admin" method="post" modelAttribute="dailyMessage">
         <div class="form-group">
             <label>Day:</label>
-            <form:input path="day" type="text" class="form-control" name="day"/>
+            <form:select path="day" items="${messages}" element="div" itemValue="day" itemLabel="message" class="form-control"/>
             </div>
         <div class="form-group">
             <label>Message:</label>
