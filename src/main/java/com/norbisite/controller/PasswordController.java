@@ -5,12 +5,14 @@ import com.norbisite.dao.DailyPasswordDAO;
 import com.norbisite.domain.DailyMessage;
 import com.norbisite.domain.DailyPassword;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,12 +38,24 @@ public class PasswordController {
     }
 
     @GetMapping(value = "/admin")
+    public String logInAdmin() {
+        return "adminLogin";
+    }
+
+    @PostMapping(value = "/admin")
+    public String logInToAdmin(Model model, HttpServletRequest httpServletRequest) {
+        if(httpServletRequest.getParameter("lg_username").equals("admin") &&  httpServletRequest.getParameter("lg_password").equals("Karcsi19")){
+            model.addAttribute("dailyMessage", new DailyMessage());
+            return "modifyMessage";
+        } else return "redirect:/";
+
+            }
     public String admin(Model model) {
         model.addAttribute("dailyMessage", new DailyMessage());
         return "modifyMessage";
     }
 
-    @PostMapping(value = "/admin")
+
     public String postAdmin (@ModelAttribute("dailyMessage") DailyMessage dailyMessage) {
         dailyMessageDAO.modify(dailyMessage);
         return "redirect:/";

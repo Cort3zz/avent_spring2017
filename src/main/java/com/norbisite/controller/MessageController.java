@@ -35,10 +35,13 @@ public class MessageController {
         binder.addValidators(new MessagePasswordValidator());
     }
 
-
-
+    @GetMapping("/cube")
+public String getCube(){
+        return "gifts/touch";
+    }
     @PostMapping(value = "/message")
     public String performMessagePassword(@Valid @ModelAttribute("messagePassword") MessagePassword messagePassword, BindingResult bindingResult, Model model) {
+
         if (bindingResult.hasErrors()) {
             return "messageLogin";
         }
