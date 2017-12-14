@@ -10,7 +10,7 @@
     <link rel="canonical" href="https://paulrhayes.com/experiments/cube-3d/touch.html"/>
     <link rel="stylesheet" href="/resources/css/experiment-styles.css"/>
 
-    <link rel="stylesheet" href="resources/css/touch.css"/>
+    <link rel="stylesheet" href="resources/css/touchCute.css"/>
 
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -50,8 +50,8 @@
             <div>
                 <h2>Szeretnél valami szebbet látni?</h2>
                 <h3>Akkor kattintsd ide</h3>
-                <img src="/resources/img/gifts/suni.png" width="300px" height="300px"/>
-            </div>
+                <a href="cubeCute.jsp"> <img src="/resources/img/gifts/suni.png" width="300px" height="300px"/></a>
+                </div>
 
         </section>
 

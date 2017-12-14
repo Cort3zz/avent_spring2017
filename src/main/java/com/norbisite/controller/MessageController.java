@@ -37,7 +37,7 @@ public class MessageController {
 
     @GetMapping("/cube")
 public String getCube(){
-        return "gifts/touch";
+        return "gifts/cube";
     }
     @PostMapping(value = "/message")
     public String performMessagePassword(@Valid @ModelAttribute("messagePassword") MessagePassword messagePassword, BindingResult bindingResult, Model model) {
